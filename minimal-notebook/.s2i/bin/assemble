@@ -2,21 +2,24 @@
 
 set -eo pipefail
 
+
+PYPI_OPT = "-i https://pypi.tuna.tsinghua.edu.cn/simple/"
+
 ########################################################################
 # INFO: Install everything that's required for Jupyter notebooks here.
 ########################################################################
 
 # Ensure we are using the latest pip and wheel packages.
 
-pip install -U pip setuptools wheel
+pip install -U pip setuptools wheel ${PYPI_OPT}
 
 # Install mod_wsgi for use in optional webdav support.
 
-pip install 'mod_wsgi==4.6.2'
+pip install 'mod_wsgi==4.6.2' ${PYPI_OPT}
 
-# Install base packages needed for running Jupyter Notebooks. 
+# Install base packages needed for running Jupyter Notebooks.
 
-pip install -r /tmp/src/requirements.txt
+pip install -r /tmp/src/requirements.txt ${PYPI_OPT}
 
 # Activate JupyterHub extension for JupyterLab.
 
@@ -86,7 +89,7 @@ rm -f /tmp/get-pip.py
 
 # Install virtualenv for Python 2.7.
 
-/opt/app-root/.local/bin/pip install --no-cache-dir --user virtualenv
+/opt/app-root/.local/bin/pip install --no-cache-dir --user virtualenv ${PYPI_OPT}
 
 # Create a virtual environment for Python 2.7.
 
@@ -96,7 +99,7 @@ rm -f /tmp/get-pip.py
 
 source /opt/app-root/supervisor/bin/activate
 
-pip install --no-cache-dir 'supervisor<3.4.0'
+pip install --no-cache-dir 'supervisor<3.4.0' ${PYPI_OPT}
 
 # Link supervisorctl into /opt/app-root/bin so in PATH.
 
