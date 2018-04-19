@@ -3,7 +3,7 @@
 set -eo pipefail
 
 
-PYPI_OPT = "-i https://pypi.tuna.tsinghua.edu.cn/simple/"
+PYPI_OPT="-i https://pypi.tuna.tsinghua.edu.cn/simple/"
 
 ########################################################################
 # INFO: Install everything that's required for Jupyter notebooks here.
